@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
-import axios from '../utils/axios';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { TYPE_USERS } from '../actions/users';
 
 function App() {
-  useEffect(() => {
-    axios.get('users')
-      .then(({data}) => console.log(data));
-  }, []);
+  const dispatch = useDispatch();
+  dispatch({ type: TYPE_USERS.GET_USERS_REQUEST });
   return (
     <div className="App">
       <header className="App-header">
