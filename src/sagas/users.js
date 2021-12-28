@@ -1,13 +1,13 @@
-import { call, fork, takeEvery } from 'redux-saga/effects';
+import { call, fork, put, takeEvery } from 'redux-saga/effects';
 import * as userActions from '../actions/users';
 import * as usersApi from '../apis/users';
 
-const { TYPE_USERS } = userActions;
+const { TYPE_USERS, getUsersSuccess } = userActions;
 
 function* getUsers() {
     try {
-        const users = yield call(usersApi.getUsers);
-        console.log('users', users);
+        const result = yield call(usersApi.getUsers);
+        yield put(getUsersSuccess(result.data));
     } catch (error) {
         console.log(error);
     }

@@ -18,12 +18,14 @@ export default function users(state = _initialState, action) {
             return {
                 ...state,
                 users: action.payload.users,
+                loading:false,
             }
         }
         case TYPE_USERS.GET_USERS_ERRORS: {
             return {
                 ...state,
                 errors: action.payload.errors,
+                loading: false,
             }
         }
         default: {
