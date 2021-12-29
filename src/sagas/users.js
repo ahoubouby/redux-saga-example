@@ -32,8 +32,13 @@ function* watchCreateUserRequest() {
 }
 
 function* deleteUser(id){
-    yield call(usersApi.deleteUser, id);
-    yield call(getUsers);
+    try {
+        yield call(usersApi.deleteUser, id);
+        yield call(getUsers);
+    }catch(e) {
+        console.log(e);
+    }
+
 }
 function* watchDeleteUserRequest(){
     while(true){
