@@ -7,8 +7,8 @@ export default function server() {
 
         routes() {
             this.namespace = "api";
-            this.get("/users", (schema, request) => {
-                return [
+            this.get("/users", (schema, request) => ({
+                 users : [
                     {
                         id: 1,
                         name: "John Doe",
@@ -19,12 +19,12 @@ export default function server() {
                         name: 'ahoubouby',
                         email: 'xxxx@gmail.com'
                     }
-                ];
-            });
-            this.post("user", (schema, request) => {
+                ]
+            }));
+            this.post("users", (schema, request) => {
                 const body = JSON.parse(request.requestBody);
                 console.log(body);
-                debugger;
+                return { users: body};
             });
         },
     });

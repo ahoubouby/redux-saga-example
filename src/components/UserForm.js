@@ -1,18 +1,20 @@
 import React from "react";
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { uuidv4 } from '../utils';
 
-export default function UserForm(props) {
+export default function UserForm({ onSubmit}) {
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
 
-    const log = e => {
+    const onHandleSubmit = e => {
         e.preventDefault();
+        onSubmit({ id: uuidv4(), name, email });
     }
     // const handleOnSubmit = React.useMemo() => {
     //     props.onSubmit({ name, email });
     // }, []);
     return (
-        <Form onSubmit={log}>
+        <Form onSubmit={onHandleSubmit}>
             <FormGroup>
                 <Label>Name</Label>
                 <Input required type="text" value={name} onChange={e => setName(e.target.value)} />

@@ -17,7 +17,7 @@ export default function users(state = _initialState, action) {
         case TYPE_USERS.GET_USERS_SUCCESS: {
             return {
                 ...state,
-                users: action.payload.users,
+                users: action.payload.users.users,
                 loading:false,
             }
         }
